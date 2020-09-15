@@ -19,6 +19,8 @@ int main()
         if (size != 4) MPI_Abort( MPI_COMM_WORLD, 1 );
         
         /* xlocal[][0] is lower ghostpoints, xlocal[][maxn+2] is upper */
+        /* ^ technically this is what the lab pdf comment says, but imo it should be xlocal[0][] 
+        and xlocal[maxn+2][] as the ghostpoints since we mean the rows */
         /* Fill the data as specified */
         /*For rows 1 to 3, fill in all the elements with the rank of the process*/
         for (i=1; i<=maxn/size; i++) for (j=0; j<maxn; j++) xlocal[i][j] = rank;
